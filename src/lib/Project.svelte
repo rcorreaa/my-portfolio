@@ -13,6 +13,16 @@
 </article>
 
 <style>
+    article{
+        margin: 10px; /*step 4.3*/
+        display: grid; /*step 4.4*/
+        grid-template-rows: subgrid; /*step 4.4*/
+        grid-row: span 3; /*step 4.4*/
+    }
+
+    article h2{
+        margin: 0; /*step 4.4*/
+    }
     p {
         font-size: 0.7em;
     }
