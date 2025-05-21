@@ -44,7 +44,7 @@
             });
         }
         else if (evt.type === "click") {
-            let commit = commits[index]
+            let commit = filteredCommits[index]
             if (!clickedCommits.includes(commit)) {
                 // Add the commit to the clickedCommits array
                 clickedCommits = [...clickedCommits, commit];
