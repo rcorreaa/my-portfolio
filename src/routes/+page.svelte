@@ -22,3 +22,8 @@
   <Project data={p} hLevel="3"/>
 {/each}
 </div>
+<!-- 
+npm install && npm install -D svelte@4 && npm install -D @sveltejs/adapter-static@2
+npm install d3
+npm i @floating-ui/dom
+ -->
