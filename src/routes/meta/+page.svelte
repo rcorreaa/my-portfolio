@@ -106,19 +106,21 @@
             return ret;
         });
         commits = d3.sort(commits, d => -d.totalLines);
+
     });
-    
-    $: minDate = d3.min(commits.map(d => d.date));
-    $: maxDate = d3.max(commits.map(d => d.date));
-    $: maxDatePlusOne = new Date(maxDate);
-    $: maxDatePlusOne.setDate(maxDatePlusOne.getDate() + 1);
-    
-    // lab 7.5
+    let minDate,maxDate,maxDatePlusOne;
+    $: {
+        minDate = d3.min(commits.map(d => d.date));
+        maxDate = d3.max(commits.map(d => d.date));
+        maxDatePlusOne = new Date(maxDate);
+        maxDatePlusOne.setDate(maxDatePlusOne.getDate() + 1);
+    }
     let commitProgress = 100;
-    $: filteredCommits = commits.filter( d=> d.datetime <= commitMaxTime);
-    $: filteredData = data.filter( d=> d.datetime <= commitMaxTime);
     $: timeScale = d3.scaleTime().domain([minDate,maxDatePlusOne]).range([0,100]);
     $: commitMaxTime = timeScale.invert(commitProgress);
+    $: filteredCommits = commits.filter( d=> d.datetime <= commitMaxTime);
+    $: filteredData = data.filter( d=> d.datetime <= commitMaxTime);
+
     
     $: filteredMinDate = d3.min(filteredCommits.map(d => d.date));
     $: filteredMaxDate = d3.max(filteredCommits.map(d => d.date));
